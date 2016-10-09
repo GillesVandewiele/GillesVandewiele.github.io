@@ -315,7 +315,9 @@ results_df.to_csv(CSV_FILE, index_label=False)
 
 							With the results in .csv file, they are easy to process, especially with a library such as
 							pandas in Python. I decided to process the data a bit more to generate a win-tie-loss
-							matrix with <a href="https://d3js.org/">d3.js</a>. <br/> <br/>
+							matrix with <a href="https://d3js.org/">d3.js</a>. The code to generate this matrix
+							can be found
+							<a href="https://github.com/GillesVandewiele/GillesVandewiele.github.io/blob/master/js/d3WTLMatrix.js">here.</a><br/> <br/>
 
 							The matrix visualisation is easy to quickly compare different algorithms and
 							can be interpreted as follows. When the algorithm displayed on the row
@@ -324,7 +326,7 @@ results_df.to_csv(CSV_FILE, index_label=False)
 							the column, the cell is colored red. In case of a tie, the cell is colored yellow.
 							The brighter (or purer) the color, how larger the number of wins/ties/losses. When you click
 							on a cell, a comparison of the two algorithms displayed on the row and column of the cell
-							regarding the different metrics ont he seventeen datasets is displayed.
+							regarding the different metrics on the seventeen datasets is displayed.
 
 							<h3 style="margin-top:2%">Win-Tie-Loss Matrix for accuracy</h3>
 
