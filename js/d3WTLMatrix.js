@@ -70,7 +70,7 @@ function createMatrixVisualization(wtl, html_elt) {
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function(d, i, j) {
-            return "<span style='color:rgba(0, 0, 255, 0.6); font-size: 10px;'>" + algorithms[j] + ' vs ' + algorithms[i] + ': ' + d; + "</span>";
+            return "<span style='color:rgba(0, 0, 255, 0.6); font-size: 10px;'>" + algorithms[j] + ' vs ' + algorithms[i] + ': ' + d + "</span>";
         });
 
     var svg = d3.select(html_elt).append("svg")
