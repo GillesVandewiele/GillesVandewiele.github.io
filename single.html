@@ -26,7 +26,7 @@
    <!-- Script
    ================================================== -->
 	<script type="text/javascript" src="d3/d3.min.js"></script>
-	<script type="text/javascript" src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+	<script type="text/javascript" src="https://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 	<script type="text/javascript" src="colorbrewer/colorbrewer.js"></script>
 	<script type="text/javascript" src="js/modernizr.js"></script>
 
@@ -48,7 +48,7 @@
 
    			<article class="entry">
 
-				<!--TODO: ref http://www.ulb.ac.be/di/map/adalpozz/pdf/poster_unbalanced.pdf-->
+				<!--TODO: ref https://www.ulb.ac.be/di/map/adalpozz/pdf/poster_unbalanced.pdf-->
 				
 					<div class="entry-content-media">
 						<div class="post-thumb">
@@ -74,19 +74,19 @@
 						<h2> Comparison </h2>
 
 							Eight different over-, under- and hybrid sampling techniques, from the
-							<a href="https://github.com/scikit-learn-contrib/imbalanced-learn" target='_blank'>
+							<a href="httpss://github.com/scikit-learn-contrib/imbalanced-learn" target='_blank'>
 							imbalanced-learn</a> library (Python) were compared to eachother, and compared to
 							when no re-sampling technique is used. The metrics that were compared are accuracy,
 							balanced accuracy and computational complexity. Seventeen different datasets from the
-							<a href="http://archive.ics.uci.edu/ml/" target='_blank'>UCI Machine Learning Repository</a>
-							were used, using <a href="http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html"
+							<a href="https://archive.ics.uci.edu/ml/" target='_blank'>UCI Machine Learning Repository</a>
+							were used, using <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html"
 											  target="_blank">CART</a>, without pruning, as classifier.
 							The hyper-parameters <i>max_depth,</i> and <i>min_samples_split</i> were optimized using
 							a grid search optimization technique. <br/> <br/>
 
 							For each dataset, 10 different measurements were taken using 5-fold cross validation with
 							varying seeds. Then, the statistical significance of these measurements was calculated using
-							<a href="https://en.wikipedia.org/wiki/Student%27s_t-test">student t-test</a> and when the
+							<a href="httpss://en.wikipedia.org/wiki/Student%27s_t-test">student t-test</a> and when the
 							p-value was below the threshold of 0.05, the win counter for the algorithm with the largest
 							mean for these measurements was incremented. <br/> <br/>
 
@@ -315,7 +315,7 @@ results_df.to_csv(CSV_FILE, index_label=False)
 
 							With the results in .csv file, they are easy to process, especially with a library such as
 							pandas in Python. I decided to process the data a bit more to generate a win-tie-loss
-							matrix with <a href="http://d3js.org/">d3.js</a>. <br/> <br/>
+							matrix with <a href="https://d3js.org/">d3.js</a>. <br/> <br/>
 
 							The matrix visualisation is easy to quickly compare different algorithms and
 							can be interpreted as follows. When the algorithm displayed on the row
@@ -363,7 +363,7 @@ results_df.to_csv(CSV_FILE, index_label=False)
 
 	<!-- Java Script
    ================================================== -->
-   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
    <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
    <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>  
    <script src="js/main.js"></script>
