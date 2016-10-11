@@ -29,6 +29,10 @@
 	<script type="text/javascript" src="js/d3.tip.v0.6.3.js"></script>
 	<script type="text/javascript" src="colorbrewer/colorbrewer.js"></script>
 	<script type="text/javascript" src="js/modernizr.js"></script>
+    <script type="text/javascript" src="js/latexit.js"></script>
+    <script type="text/javascript">
+        LatexIT.add('p',true);
+    </script>
 
    <!-- Favicons
 	================================================== -->
@@ -61,9 +65,47 @@
 
 					<div class="entry-content">
 
-						<h1> Imbalanced data </h1>
+                        <a name="imbalanced_data"></a> <h1> Imbalanced data </h1>
+                            <p>
+                            An imbalance in the distribution of the classes in the data used to construct
+                            a classifying model can cause the model to be biased towards the largest populated class.
+                            This leads to a bad accuracy for the lower populated classes, while the global accuracy
+                            of the classifier can still be high. If we take for example data for a binary classification
+                            where 99% of the samples are positive and only 1% negative. Trivially, by just always
+                            predicting positive, an accuracy of 99% can be achieved, while the accuracy for the negative
+                            class individually is 0%. While this example is a rather extreme case, this can be of a
+                            large concern in certain applications. For example, in medical data sets the number of
+                            "normal" samples can be very large in comparison to the anomalies, while mispredicting an anomaly
+                            (false negative) can cost human lives. A false positive would only lead to an extra
+                            medical examination.
+                            </p>
 
 						<h1> Balanced accuracy </h1>
+                            <p>
+                            As explained in the example given <a href="#imbalanced_data">above</a>, the global accuracy
+                            can give a rather wrong image of the prediction performance of the classifier. A
+                            straight-forward metric that incorporates the prediction performance for each class
+                            individually is called <strong>balanced accuracy</strong>. This is equal to: <br/>
+                            $\frac{\sum_{c \in classes} \frac{correctly\_classified\_samples(c)}{number\_of\_samples(c)}}{|classes|}$ <br/>
+                            Or simply calculating the accuracy for each of the classes individually and then taking the
+                            mean. As an example, I trained a
+                            <a href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html" target="_blank">Random Forest</a>
+                                model on the
+                            <a href="https://archive.ics.uci.edu/ml/datasets/Ecoli" target="_blank">ecoli dataset</a>
+                            of the UCI ML Repository. The hyper-parameters of the model were chosen by using
+                            <a href="https://github.com/fmfn/BayesianOptimization" target="_blank">Bayesian parameter optimization.</a>
+                            The distribution of the classes in this dataset is rather
+                            skewed, as we can see on the pie chart below. As a result, the classification performance of
+                            the model for the lower populated classes is rather low, which can be seen in the confusion
+                            matrix below. While achieving a regular accuracy of
+                            $.9789*.436+.8701*.236+.7885*.16+0.6*.107+.8*.061 = .8745$, the balanced accuracy
+                            is only equal to <br/> $\frac{0.9789+0.8701+0.7885+0.6+0.8}{5} = 0.8075$ <br/>
+                            </p>
+
+                            <div>
+                                <img src="images/ecoli_distribution.png" style="width:45%;height:50%;">
+                                <img src="images/confusion_matrix.png" style="width:45%;height:50%;">
+                            </div>
 
 						<h1> Re-sampling </h1>
 						<h2> Undersampling </h2>
@@ -74,7 +116,7 @@
 						<h2> Comparison </h2>
 
 							Eight different over-, under- and hybrid sampling techniques, from the
-							<a href="httpss://github.com/scikit-learn-contrib/imbalanced-learn" target='_blank'>
+							<a href="https://github.com/scikit-learn-contrib/imbalanced-learn" target='_blank'>
 							imbalanced-learn</a> library (Python) were compared to eachother, and compared to
 							when no re-sampling technique is used. The metrics that were compared are accuracy,
 							balanced accuracy and computational complexity. Seventeen different datasets from the
@@ -86,15 +128,15 @@
 
 							For each dataset, 10 different measurements were taken using 5-fold cross validation with
 							varying seeds. Then, the statistical significance of these measurements was calculated using
-							<a href="httpss://en.wikipedia.org/wiki/Student%27s_t-test" target='_blank'>student t-test</a> and when the
+							<a href="https://en.wikipedia.org/wiki/Student%27s_t-test" target='_blank'>student t-test</a> and when the
 							p-value was below the threshold of 0.05, the win counter for the algorithm with the largest
 							mean for these measurements was incremented. <br/> <br/>
 
-							The code to execute these experiments can be found below. In order to run it, python2.7 must
+							The code to execute these experiments can be found below (by clicking on the titles). In order to run it, python2.7 must
 							be installed and the required libraries too. Then, a data map is required with dataset files
 							which must be read in through a function that returns a pandas dataframe, the feature
 							column names, the label column names and the dataset name (an example can be found below
-							too). After executing this code, a csv_file with all the results will be stored, on location <i>CSV_FILE</i>.
+							too). After executing this code, a csv file with all the results will be stored, on location <i>CSV_FILE</i>.
 							<h3 onclick="$('#code2').toggle()">Dataset loading example</h3>
 							<div id="code2" style="display:none;">
 								<h4>load_datasets.py</h4>
@@ -332,19 +374,14 @@ results_df.to_csv(CSV_FILE, index_label=False)
 
 							<div id="accMatrix" style="margin-bottom:5%;"></div>
 
+							<table class="table table-hover" id="metricTable">
+							</table>
+
 							<h3 style="margin-top:2%">Win-Tie-Loss Matrix for balanced accuracy</h3>
 
 							<div id="balaccMatrix" style="margin-bottom:5%;"></div>
 
-							<table class="table table-hover" id="#balaccTable">
-								<thead>
-								<tr>
-									<th>Firstname</th>
-									<th>Lastname</th>
-									<th>Email</th>
-								</tr>
-								</thead>
-							</table>
+                        <h2>References</h2>
 
 					</div>
 

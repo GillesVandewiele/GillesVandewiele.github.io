@@ -5,25 +5,24 @@
 // var brewer10 = colorbrewer.RdYlGn[10]
 
 
-var acc_metrics = "data/results_d3_acc.csv";
-var balacc_metrics = "data/results_d3_balacc.csv";
+var acc_metrics = "data/results_d3.csv";
 var WTLAccMatrix  = "data/results_wtl_acc.csv";
 var WTLBalAccMatrix  = "data/results_wtl_balacc.csv";
 var id_moviemap;
 
 d3.csv(WTLAccMatrix, function(wtl){
-
-    createMatrixVisualization(wtl, '#accMatrix');
-
+    d3.csv(acc_metrics, function(metrics){
+        createMatrixVisualization(wtl, '#accMatrix', metrics);
+    })
 });
 
 d3.csv(WTLBalAccMatrix, function(wtl){
-
-    createMatrixVisualization(wtl, '#balaccMatrix');
-
+    d3.csv(acc_metrics, function(metrics){
+        createMatrixVisualization(wtl, '#balaccMatrix', metrics);
+    })
 });
 
-function createMatrixVisualization(wtl, html_elt) {
+function createMatrixVisualization(wtl, html_elt, metrics) {
 
     console.log(wtl);
     var nrows = wtl.length;
@@ -158,12 +157,12 @@ function createMatrixVisualization(wtl, html_elt) {
         })
         .on('mouseover', tip.show)
         .on('mouseout', tip.hide)
-        .on('click', function(d,i,j){createTable(algorithms[j], algorithms[i]);});
+        .on('click', function(d,i,j){createTable(algorithms[j], algorithms[i], metrics);});
 
     svg.call(tip);
 
 }
 
-function createTable(algorithm1, algorithm2) {
+function createTable(metrics, algorithm1, algorithm2) {
     console.log(algorithm1, algorithm2);
 }
